@@ -53,6 +53,7 @@ namespace SCREW.Voice.Client
         private WaveInEvent waveIn;
         private WaveOut waveOut;
         private BufferedWaveProvider bufferedWaveProvider;
+        private IPEndPoint serverReceiveEndPoint;
 
         public Client(ChatSettings chatSettings)
         {
@@ -94,7 +95,8 @@ namespace SCREW.Voice.Client
                 {
                     try
                     {
-                        udpClient.Connect(new IPEndPoint(address, port));
+                        serverReceiveEndPoint = new IPEndPoint(address, port);
+                        udpClient.Connect(serverReceiveEndPoint);
                         connected = true;
                         Console.WriteLine($"Connected to {address}");
                         break;
@@ -157,6 +159,36 @@ namespace SCREW.Voice.Client
             catch (Exception ex)
             {
                 Console.WriteLine($"[Error] SCREW Voice: {ex.Message}");
+            }
+        }
+
+        public int GetPing(int timeoutInMilliseconds)
+        {
+            try
+            {
+                udpClient.Client.ReceiveTimeout = timeoutInMilliseconds;
+
+                DateTime startTime = DateTime.Now;
+                byte[] pingMessage = new byte[1];
+                udpClient.Send(pingMessage, pingMessage.Length);
+
+                bool receivedResponse = udpClient.Client.Poll(timeoutInMilliseconds * 1000, SelectMode.SelectRead);
+
+                if (receivedResponse)
+                {
+                    udpClient.Receive(ref serverReceiveEndPoint);
+                    TimeSpan pingTime = DateTime.Now - startTime;
+                    return (int)pingTime.TotalMilliseconds;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Error] SCREW Voice: {ex.Message}");
+                return -1;
             }
         }
     }
