@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCREW.Voice", "SCREW.Voice\SCREW.Voice.csproj", "{7E899136-A59A-4876-9320-7E12EAB1C01A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E899136-A59A-4876-9320-7E12EAB1C01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E899136-A59A-4876-9320-7E12EAB1C01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E899136-A59A-4876-9320-7E12EAB1C01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E899136-A59A-4876-9320-7E12EAB1C01A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A16AC55-61B9-4293-8A2E-D9DE15608D02}
+	EndGlobalSection
+EndGlobal
