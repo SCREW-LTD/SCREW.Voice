@@ -1,6 +1,6 @@
 # SCREW.Voice
 
-SCREW.Voice - UDP server-client for realtime voice chat in C#.
+SCREW.Voice — UDP server-client for realtime voice chat in C#.
 
 The library uses the NAudio package to transmit and receive audio.
 
